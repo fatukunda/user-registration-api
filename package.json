@@ -3,20 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "env-cmd -f ./.env nodemon src/app.js"
+    "start": "NODE_ENV=prod node ./build/index.js",
+    "dev": "NODE_ENV=dev nodemon --exec babel-node ./src/index.js",
+    "build": "rm -rf ./build && babel -d ./build ./src -s"
   },
   "author": "Frank Atukunda",
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "^7.10.2",
     "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.2.7",
-    "mongoose": "^5.7.5",
-    "validator": "^11.0.0"
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.18",
+    "validator": "^11.1.0"
   },
   "devDependencies": {
-    "env-cmd": "^9.0.3",
-    "nodemon": "^1.19.1"
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "nodemon": "^1.19.4"
   }
 }
